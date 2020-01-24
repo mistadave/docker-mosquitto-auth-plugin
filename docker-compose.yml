@@ -1,0 +1,38 @@
+version: "3"
+
+services:
+  mqtt:
+    build: .
+    volumes:
+      - ./mosquitto.conf:/mosquitto/config/mosquitto.conf
+    expose:
+      - 1883
+    ports:
+      - "1883:1883"
+    networks:
+      - mongodb_default
+    environment:
+      - DOMAIN=example.local
+      - PORT=8080
+    tty: true
+    stdin_open: true
+
+  mongo:
+    image: mongo:4.2.2
+    restart: always
+    ports:
+      - "27017:27017"
+    networks:
+      - mongo-backend
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: mqtt
+      MONGO_INITDB_DATABASE: mqGate
+    volumes:
+      - mongodata:/data/db
+
+networks:
+  mongo-backend:
+    external: true
+volumes:
+  mongodata:

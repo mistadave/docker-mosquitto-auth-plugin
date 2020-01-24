@@ -29,7 +29,20 @@ mosquittoauthplugin:1.6.8
 
 The current configuration uses the root user for mongodb, which should only be used for development purposes.
 
-### Create user
+Now you need to create the Collections for the mqtt to use it. [Main Git Repo link](https://github.com/jpmens/mosquitto-auth-plug#mongodb-auth)
+
+### Create only users collection
+
+You create only one collection with the user, password and the allowed topics. This is gonna look like on the picture.
+![alt text](./mqtt-auth-plugin-users-table.png)
+
+You also need to create the password. Therefore the **contrib** folder on the Main Github repo will help you.
+
+To create the password hash for the user which will be read by the auth-plugin, you have several implementation samples on the main repo.
+
+[Link to main repo](https://github.com/jpmens/mosquitto-auth-plug/tree/master/contrib)
+
+### (Optional) Create new DB user
 
 Create a user for the mqtt plugin on the mqGate Database, since you wan't to use the root user because of security reasons.
 
@@ -69,4 +82,7 @@ db.createUser({
 })
 # this Should return: Successfully added user: ....
 ```
+
+Now you need to change the uri in the mosquitto.conf file with the new generated user credentials.
+
 [Doc Link](https://docs.mongodb.com/manual/reference/method/db.createUser/)

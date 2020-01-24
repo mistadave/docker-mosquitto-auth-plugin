@@ -30,6 +30,20 @@ services:
       MONGO_INITDB_DATABASE: mqGate
     volumes:
       - mongodata:/data/db
+  
+  mongo-express:
+    image: mongo-express
+    restart: always
+    depends_on: 
+      - simpli-mongo
+    ports:
+      - "8081:8081"
+    networks: 
+      - mongo-backend
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: mqtt
+      ME_CONFIG_MONGODB_SERVER: 'mongo'
 
 networks:
   mongo-backend:

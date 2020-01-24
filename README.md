@@ -1,6 +1,11 @@
 # docker-mosquitto-auth-plugin
 
-This repository contains a Docker file, which creates a mqtt container with the mqtt-auth-plug with a MongoDB configuration.
+This repository contains a Docker file, which creates a mqtt container with the mqtt-auth-plug with a MongoDB server configuration.
+Also is the mongo-express for a simple web-view of the mongodb added to the compose file.
+
+View the mongo db on [http://localhost:8081](http://localhost:8081).
+
+Connect to the mqtt via: **localhost:1883**. A nice tool for mqtt connection testing is: [MQTTfx](http://mqttfx.org).
 
 ## Build
 

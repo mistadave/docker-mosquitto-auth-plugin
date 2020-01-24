@@ -42,6 +42,16 @@ To create the password hash for the user which will be read by the auth-plugin, 
 
 [Link to main repo](https://github.com/jpmens/mosquitto-auth-plug/tree/master/contrib)
 
+### (Optional) Create users, topics collection
+
+You can also create the users and topics collection seperate. For this you need to add the following prop in the configuration file.
+
+* **user_topiclist_fk_prop topics** -> Property used as a foreign key to reference a topiclist document
+* **topiclist_key_prop _id** -> Unique key in the topiclist document pointed to by user_topiclist_fk_prop
+* **topiclist_topics_prop topics** -> Property containing topics within the topiclist document
+
+Go see the doc on the main git repo for the exact implementation.
+
 ### (Optional) Create new DB user
 
 Create a user for the mqtt plugin on the mqGate Database, since you wan't to use the root user because of security reasons.

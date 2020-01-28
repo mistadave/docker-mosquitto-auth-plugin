@@ -38,16 +38,22 @@ Now you need to create the Collections for the mqtt to use it. [Main Git Repo li
 
 ### Create only users collection
 
-You create only one collection with the user, password and the allowed topics. This is gonna look like on the picture.
+You create only one collection with the user, password and the allowed topics.
+You need following columns:
+
+* username (String)
+* password (String)
+* supperuser (Boolean)
+* topics (Object)
+
+This is gonna look like on the picture.
 ![alt text](./mqtt-auth-plugin-users-table.png)
 
-You also need to create the password. Therefore the **contrib** folder on the Main Github repo will help you.
-
-To create the password hash for the user which will be read by the auth-plugin, you have several implementation samples on the main repo.
+To generate the password the **contrib** folder on the Main Github repo will help you. You'll find there several implementation samples in different languages.
 
 [Link to main repo](https://github.com/jpmens/mosquitto-auth-plug/tree/master/contrib)
 
-### (Optional) Create users, topics collection
+### (Optional) Create users and seperat topics collection
 
 You can also create the users and topics collection seperate. For this you need to add the following prop in the configuration file.
 

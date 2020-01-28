@@ -70,7 +70,6 @@ Create a user for the mqtt plugin on the mqGate Database, since you wan't to use
 Therefore login on the mongo container either with the mongo shell or direct on the docker container, where the mongo shell is also installed.
 
 **Mongo Shell**
-
 To login with the mongo shell, you need to have it installed on your local machine. On the following link, you'll find out how to install it. [Mongo Shell Link](https://docs.mongodb.com/manual/mongo/)
 
 ```bash
@@ -78,8 +77,7 @@ mongo -u root localhost:27017/admin
 ```
 
 **Docker Container**
-
-the name "mongo" stands for the container name, which may be different.
+The name "mongo" stands for the container name, which may be different.
 
 ```bash
 docker exec -it mongo bash
@@ -88,7 +86,6 @@ mongo -u root localhost:27017/admin
 ```
 
 **Mongo Create user**
-
 Now you're on the mongo shell and can use the mongo commands to create a new user for your database.
 
 ```bash
@@ -96,7 +93,7 @@ show dbs
 # this lists all current databases on your mongodb instance.
 use mqGate
 # use your mqtt db in this case, mqGate.
-db.createUser({ 
+db.createUser({
     user: "mqtt",
     pwd: "yourpasword",
     roles: [{role: "read", db: "mqGate"}]

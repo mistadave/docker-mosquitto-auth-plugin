@@ -5,7 +5,7 @@ services:
 
 before_install:
   - docker build -t chirage/mosquittoauthplugin:1.6.8 .
-  - docker run -d chirage/mosquittoauthplugin
+  - docker run -d chirage/mosquittoauthplugin:1.6.8
   - docker ps -a
 
 deploy:

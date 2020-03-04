@@ -1,0 +1,15 @@
+language: bash
+
+services:
+  - docker
+
+before_install:
+  - docker build --rm -f "Dockerfile" -t chirage/mosquittoauthplugin:1.6.8
+  - docker run -d chirage/mosquittoauthplugin
+  - docker ps -a
+
+deploy:
+  provider: script
+  srcipt: bash docker_push
+  on:
+    branch: master

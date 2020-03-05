@@ -1,3 +1,12 @@
 #!/bin/bash
 echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+docker push chirage/mosquittoauthpluginmongo:latest
+
+docker tag chirage/mosquittoauthpluginmongo:latest chirage/mosquittoauthpluginmongo:1
+docker push chirage/mosquittoauthpluginmongo:1
+
+docker tag chirage/mosquittoauthpluginmongo:latest chirage/mosquittoauthpluginmongo:1.6
+docker push chirage/mosquittoauthpluginmongo:1.6
+
+docker tag chirage/mosquittoauthpluginmongo:latest chirage/mosquittoauthpluginmongo:1.6.8
 docker push chirage/mosquittoauthpluginmongo:1.6.8

@@ -35,7 +35,7 @@ services:
     image: mongo-express
     restart: always
     depends_on: 
-      - simpli-mongo
+      - mongo
     ports:
       - "8081:8081"
     networks: 

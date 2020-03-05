@@ -10,7 +10,7 @@ services:
     ports:
       - "1883:1883"
     networks:
-      - mongodb_default
+      - mongo-backend
     environment:
       - DOMAIN=example.local
       - PORT=8080
@@ -47,6 +47,6 @@ services:
 
 networks:
   mongo-backend:
-    external: true
+
 volumes:
   mongodata:

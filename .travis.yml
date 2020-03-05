@@ -1,0 +1,15 @@
+language: shell
+
+services:
+  - docker
+
+before_install:
+  - docker build -t chirage/mosquittoauthpluginmongo:1.6.8 .
+  - docker run -d chirage/mosquittoauthpluginmongo:1.6.8
+  - docker ps -a
+
+deploy:
+  provider: script
+  script: bash docker_push
+  on:
+    branch: master

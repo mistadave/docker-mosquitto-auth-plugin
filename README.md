@@ -63,6 +63,12 @@ To generate the password the **contrib** folder on the Main Github repo will hel
 
 [Link to main repo](https://github.com/jpmens/mosquitto-auth-plug/tree/master/contrib)
 
+Sample hash for password: **hallo**
+
+```
+PBKDF2$sha256$10000$9D0XLHLBXowu1s0R$YLm2tf9JJ9jLY1ty2MZRsHNM5j4tNLAo
+```
+
 ### (Optional) Create users and seperat topics collection
 
 You can also create the users and topics collection seperate. For this you need to add the following prop in the configuration file.

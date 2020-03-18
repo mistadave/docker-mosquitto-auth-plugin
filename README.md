@@ -27,6 +27,8 @@ The simplest way to build the mqtt container with the auth plugin is to run the 
 
 Now you're able to connect to the mqtt with the user: **user1** and password **hallo** on localhost with port 1883.
 
+It creates the mqGate db with the init script and also the given sample user with password to test the authentication with mongodb.
+
 To clear all data and shutdown the service run the *clear-compose.sh* script.
 
 ### Manual

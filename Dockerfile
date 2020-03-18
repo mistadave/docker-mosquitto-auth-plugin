@@ -11,6 +11,8 @@ ENV VERSION=1.6.9 \
 RUN addgroup -S -g 1883 mosquitto 2>/dev/null && \
     adduser -S -u 1883 -D -H -h /var/empty -s /sbin/nologin -G mosquitto -g mosquitto mosquitto 2>/dev/null
 
+RUN apk add libcurl mongo-c-driver
+
 RUN set -x && \
     apk --no-cache add --virtual build-deps \
         build-base \
@@ -84,11 +86,8 @@ RUN set -x && \
     install -s -m755 /build/mosquitto/src/mosquitto /usr/sbin/mosquitto && \
     install -s -m755 /build/mosquitto/src/mosquitto_passwd /usr/bin/mosquitto_passwd && \
     install -m644 /build/mosquitto/mosquitto.conf /mosquitto/config/mosquitto.conf && \
-    chown -R mosquitto:mosquitto /mosquitto
-
-RUN apk add libcurl mongo-c-driver
-
-RUN cd /build/mosquitto/ && \
+    chown -R mosquitto:mosquitto /mosquitto && \
+    cd /build/mosquitto/ && \
     git clone https://github.com/vankxr/mosquitto-auth-plug && \
     cd .. && \
     pwd && \
@@ -114,7 +113,8 @@ RUN cd /build/mosquitto/ && \
     apk --no-cache add \
         ca-certificates && \
     apk del build-deps && \
-    rm -rf /build
+    rm -rf /build && \
+    rm -rf /var/cache/apk/*
 
 VOLUME ["/mosquitto/data", "/mosquitto/log"]
 

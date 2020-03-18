@@ -19,11 +19,15 @@ docker run -p 1883:1883 -v ./mosquitto.conf:/mosquitto/conf/mosquitto.conf chira
 
 ## Build
 
-The simplest way to build the mqtt container with the auth plugin is to run the docker-compose file.
+The simplest way to build the mqtt container with the auth plugin is to run the *run-compose.sh* script.
 
 ```bash
-docker-compose -f "./docker-compose.yml" up -d --build
+./run-compose.sh
 ```
+
+Now you're able to connect to the mqtt with the user: **user1** and password **hallo** on localhost with port 1883.
+
+To clear all data and shutdown the service run the *clear-compose.sh* script.
 
 ### Manual
 
@@ -110,9 +114,9 @@ show dbs
 use mqGate
 # use your mqtt db in this case, mqGate.
 db.createUser({
-    user: "mqtt",
-    pwd: "yourpasword",
-    roles: [{role: "read", db: "mqGate"}]
+    user: "mqtt2",
+    pwd: "mqtt",
+    roles: [{role: "readWrite", db: "mqGate"}]
 })
 # this Should return: Successfully added user: ....
 ```
